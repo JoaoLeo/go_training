@@ -1,6 +1,4 @@
-import "fml"
-
-func package main
+package main
 
 import (
 	"fmt"
