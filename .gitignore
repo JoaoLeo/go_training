@@ -1,0 +1,60 @@
+# =====================================
+# Go binaries
+# =====================================
+
+# Binários comuns (Windows, Linux, macOS)
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Executáveis gerados pelo Go (sem extensão)
+# Ignora qualquer arquivo executável no diretório raiz ou subpastas
+**/modulo
+**/main
+**/*.out
+**/*.test
+**/*.bin
+
+# Diretórios de build/output
+/bin/
+/build/
+/dist/
+/out/
+/target/
+
+# =====================================
+# Go cache e módulos
+# =====================================
+.cache/go-build/
+pkg/mod/
+
+# Testes e perfis
+*_test
+*.prof
+*.pprof
+*.cover
+*.coverprofile
+
+# =====================================
+# IDEs e editores
+# =====================================
+.idea/
+.vscode/
+*.iml
+.DS_Store
+
+# =====================================
+# Logs e temporários
+# =====================================
+*.log
+*.tmp
+*.swp
+*.swo
+*~
+
+# =====================================
+# Go modules
+# =====================================
+/go.sum
+!go.mod
