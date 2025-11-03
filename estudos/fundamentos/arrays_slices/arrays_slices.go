@@ -25,4 +25,10 @@ func main() {
 
 	fmt.Println(slice1, slice2)
 	fmt.Println(reflect.TypeOf(slice1))
+
+	// arrays internos
+	slice3 := make([]float32, 10, 15)
+	fmt.Println(slice3)
+	fmt.Println(len(slice3)) // length
+	fmt.Println(cap(slice3)) // capacidade - maximo
 }
