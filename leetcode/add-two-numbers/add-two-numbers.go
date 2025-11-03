@@ -14,13 +14,16 @@ Explanation: 342 + 465 = 807.
 Dividir para conquistas
 1 - Criar os listnode baseado nas lista - feito
 2 - Reverter a ordem dos listnode - feito
-3 - Transformar os listnode em numeros inteiros
-4 - Somar numeros
+3 - Transformar os listnode em numeros inteiros - feito
+4 - Somar numeros - feito
 5 - Transformar o numero em um listnode
 */
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 type ListNode struct {
 	Val  int
@@ -76,13 +79,53 @@ func reverseList(l *ListNode) *ListNode {
 	return result
 }
 
+func convertListNodeToInt(l *ListNode) int {
+	var numeroStr string
+
+	current := l
+	for current != nil {
+		numeroStr += strconv.Itoa(current.Val)
+		current = current.Next
+	}
+
+	numero, err := strconv.Atoi(numeroStr)
+
+	if err != nil {
+		return 0
+	}
+
+	return numero
+}
+
+func createListNodeFromInt(num int) *ListNode {
+	fmt.Println(num)
+	numeroStr := strconv.Itoa(num)
+	list := make([]int, len(numeroStr))
+
+	for i, c := range numeroStr {
+		numero, err := strconv.Atoi(string(c))
+		if err == nil {
+			list[i] = numero
+		}
+	}
+
+	result := buildList(list)
+
+	return result
+}
+
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	return l1
+	l1 = reverseList(l1)
+	l2 = reverseList(l2)
+	n1 := convertListNodeToInt(l1)
+	n2 := convertListNodeToInt(l2)
+	resultInt := n1 + n2
+	result := reverseList(createListNodeFromInt(resultInt))
+	return result
 }
 
 func main() {
-	l1 := buildList([]int{2, 4, 3})
+	l1 := buildList([]int{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1})
 	l2 := buildList([]int{5, 6, 4})
-	printList(reverseList(l1))
-	printList(reverseList(l2))
+	printList(addTwoNumbers(l1, l2))
 }
